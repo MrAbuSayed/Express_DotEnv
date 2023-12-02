@@ -1,13 +1,13 @@
 // acsess the variable from ENV file
 require('dotenv').config();
-const express=require('express');
-const app = express();
+const app = require('./app');
+const DbConnect = require('./connectDb/DBconnect');
 const PORT= process.env.PORT || 5758 ;
 
-app.get('/',(req,res)=>{
- res.send("Hellow Programmer");
-});
 
-app.listen(PORT, ()=>{
+
+
+app.listen(PORT,async ()=>{
     console.log(`The ser is Running on http://localhost:${PORT}/`);
+    await DbConnect();
 });
